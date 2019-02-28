@@ -8,7 +8,6 @@ using System.Net.NetworkInformation;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Google.Cloud.Translation.V2;
 
 namespace Jet_Bot.Modules
 {
@@ -32,10 +31,11 @@ namespace Jet_Bot.Modules
                 info += "\nStatus: " + pingReply.Status.ToString();
             }
             EmbedBuilder builder = new EmbedBuilder();
+            Random rand = new Random();
 
             builder.WithTitle("About of server")
                 .WithDescription(info)
-                .WithColor(Color.Teal)
+                .WithColor(new Color(rand.Next(255), rand.Next(255), rand.Next(255)))
                 .WithTimestamp(DateTimeOffset.Now);
             
             await ReplyAsync("", false, builder.Build());
