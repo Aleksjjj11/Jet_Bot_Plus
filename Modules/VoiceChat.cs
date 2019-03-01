@@ -35,15 +35,18 @@ namespace Jet_Bot.Modules
         }
 
         [Command("InMe")]
-        public async Task JoinWithUser(IUser user)
+        //Connect to voice channel with user
+        public async Task JoinWithUser()
         { 
-            //IGuildUser aav = Context.User as IGuildUser;
-            //IVoiceChannel voicee = aav.VoiceChannel;
-            //await ReplyAsync((Context.User as IGuildUser).Nickname);
-            //await ReplyAsync(user.);
-            //voiceChannel = Context.Guild.GetVoiceChannel(voicee.Id);
-            //await voiceChannel.ConnectAsync();
+            IVoiceChannel voice = null;
+            voice = (Context.User as IGuildUser).VoiceChannel;
+            
+            if (voice != null) 
+            {
+                await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voice.Name);
+                await voice.ConnectAsync();
 
+            } else await ReplyAsync("You are not in voice channel. Connect to voice channel, please.");
         }
         
         private static string GetMD5(string inputString) //Creates a MD5 hash from a input string
