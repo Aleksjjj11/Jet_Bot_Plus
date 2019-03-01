@@ -12,13 +12,10 @@ namespace Jet_Bot.Modules
 {
     public class Search : ModuleBase<SocketCommandContext>
     { 
-      //[Command("Search")]
       [Command("S")]
       [STAThread]
       public async Task SearchAsync(int count_result = 1, [Remainder] String messages = "Music")
       {
-        //await ReplyAsync(messages);
-        
         if (count_result > 50)
         {
           await ReplyAsync("Кол-во возможных результатов слишком большое, будет выведенно только 50.");
@@ -27,7 +24,6 @@ namespace Jet_Bot.Modules
         Search search = new Search();
         try
         {
-          //search.Run(message);
           BaseClientService.Initializer baseClientService = new BaseClientService.Initializer()
         {
           ApiKey = "AIzaSyCZzg069XlgJ9_yIDwYkT1GTpi8aHRrh2U",
@@ -84,8 +80,6 @@ namespace Jet_Bot.Modules
             Console.WriteLine("Error: " + e.Message);
           }
         }
-
-        //await ReplyAsync("Completed", false);
     }
   }
 }

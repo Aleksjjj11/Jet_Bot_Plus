@@ -29,9 +29,6 @@ namespace Jet_Bot.Modules
             await ReplyAsync(voiceChannel.Name + " ID: " + voiceChannel.Id.ToString());
             
             await voiceChannel.ConnectAsync();
-            //SocketVoiceChannel vcChannel = (SocketVoiceChannel)channel;
-            //vcChannel.Guild.
-            //await ReplyAsync(name);
         }
 
         [Command("InMe")]
@@ -60,7 +57,7 @@ namespace Jet_Bot.Modules
         [Command("Dictionary")]
         public async Task Leave_vAsync()
         {
-            await Context.Channel.SendFileAsync("dictionory.txt");
+            await Context.Channel.SendFileAsync("dictionary.txt");
         } 
         
         private async Task DownloadVideo() //Downloads a Youtube Video

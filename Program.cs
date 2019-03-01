@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Reflection; 
 using System.Threading.Tasks;
+
 using Discord.Commands;
 using Discord.WebSocket;
 using Jet_Bot.Core.Accounts;
@@ -26,7 +27,6 @@ namespace Jet_Bot
         private DiscordSocketClient _client;
         private CommandService _commands;
         private IServiceProvider _services; 
-        //private DiscordClient _discord;
         
         public static string OutputFolder = $"{Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar}videos";
 
@@ -111,11 +111,7 @@ namespace Jet_Bot
                     Console.WriteLine(result.ErrorReason);
             }
             
-            //DataStorage.AddToStorage(context.User.Username, context.User.Id.ToString());
             UserAccounts.GetAccount(context.User); //Don't working исправить UsersAccounts либо полность перейти на Users
-            //Debug Completed
-            //Console.WriteLine(context.User.Username + " ID: " + context.User.Id.ToString());
-            //С отправленными значениемы всё хорошо, значит проблема в приведении типа в UserAccounts
         } 
     }
 } 

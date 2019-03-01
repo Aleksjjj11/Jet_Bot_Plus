@@ -43,11 +43,9 @@ namespace Jet_Bot.Modules
         }
         
         [Command("Trigger")]
-        public async Task TrigerAsync()
+        public async Task TriggerAsync()
         { 
             await Context.Channel.SendMessageAsync(Context.IsPrivate.ToString());
-            //var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-            //await dmChannel.SendMessageAsync("Hi, how are you?");
         }
     }
 }

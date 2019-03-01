@@ -44,7 +44,7 @@ namespace Jet_Bot.Modules
         { 
             try
             {
-                StreamReader objReader = new StreamReader("dictionory.txt");
+                StreamReader objReader = new StreamReader("dictionary.txt");
                 string sLine="";
                 ArrayList arrText = new ArrayList();
                 while (sLine != null){
@@ -56,8 +56,6 @@ namespace Jet_Bot.Modules
 
                 foreach (string sOutput in arrText)
                 {
-                    //Translate message = new Translate();
-                    //await ReplyAsync(sOutput, false);
                     System.Threading.Thread.Sleep(500);
                     await T_RuAsync(sOutput);
                     System.Threading.Thread.Sleep(3000);
