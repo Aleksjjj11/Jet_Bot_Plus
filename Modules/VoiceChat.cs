@@ -6,10 +6,11 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Discord;
 using YoutubeExtractor;
+using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Discord.Audio;
 
 namespace Jet_Bot.Modules
 {
@@ -27,7 +28,6 @@ namespace Jet_Bot.Modules
         { 
             voiceChannel = Context.Guild.GetVoiceChannel(channel.Id);
             await ReplyAsync(voiceChannel.Name + " ID: " + voiceChannel.Id.ToString());
-            
             await voiceChannel.ConnectAsync();
         }
 
@@ -35,14 +35,15 @@ namespace Jet_Bot.Modules
         //Connect to voice channel with user
         public async Task JoinWithUser()
         { 
-            IVoiceChannel voice = null;
-            voice = (Context.User as IGuildUser).VoiceChannel;
+            IVoiceChannel voiceChannel = null;
+            voiceChannel = (Context.User as IGuildUser).VoiceChannel;
             
-            if (voice != null) 
+            if (voiceChannel != null) 
             {
-                await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voice.Name);
-                await voice.ConnectAsync();
-
+                DiscordSocketClient client = Context.Client;
+                await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voiceChannel.Name);
+                //var audioClient = await voiceChannel.ConnectAsync();
+                //var ffmpeg;
             } else await ReplyAsync("You are not in voice channel. Connect to voice channel, please.");
         }
         
