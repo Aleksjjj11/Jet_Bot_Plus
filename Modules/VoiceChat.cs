@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using YoutubeExtractor;
 using Discord;
 using Discord.Commands;
@@ -21,30 +22,54 @@ namespace Jet_Bot.Modules
         private VideoInfo Videoinfo;
         public string FilePath;
         public SocketVoiceChannel voiceChannel;
+        private Process CreateStream(string url)
+        {
+            Process currentsong = new Process();
+            try
+            {
+                currentsong.StartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/C youtube-dl -o - {url} | ffmpeg -i pipe:0 -ac 2 -f s16le -ar 48000 pipe:1",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                };
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Что-то went не так. %_%");
+                throw;
+            }
+            currentsong.Start();
+            return currentsong;
+        }
         
-        
+        [Command("InMe")]
+        //Connect to voice channel with user
+        public async Task JoinWithUser(string url = "https://www.youtube.com/watch?v=J69oCCM1EcI")
+        { 
+            IVoiceChannel voiceChannel = voiceChannel = (Context.User as IVoiceState).VoiceChannel;
+            
+            if (voiceChannel != null) 
+            {
+                await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voiceChannel.Name);
+                IAudioClient client = await voiceChannel.ConnectAsync();
+
+                Stream output = CreateStream(url).StandardOutput.BaseStream;
+                AudioOutStream stream = client.CreatePCMStream(AudioApplication.Music, 128 * 1024);
+                await output.CopyToAsync(stream);
+                await stream.FlushAsync().ConfigureAwait(false);
+                
+            } else await ReplyAsync("You are not in voice channel. Connect to voice channel, please.");
+        }
+
         [Command("JoinVoice")]
         public async Task JoinVoiceAsync(IVoiceChannel channel)
         { 
             voiceChannel = Context.Guild.GetVoiceChannel(channel.Id);
             await ReplyAsync(voiceChannel.Name + " ID: " + voiceChannel.Id.ToString());
             await voiceChannel.ConnectAsync();
-        }
-
-        [Command("InMe")]
-        //Connect to voice channel with user
-        public async Task JoinWithUser()
-        { 
-            IVoiceChannel voiceChannel = null;
-            voiceChannel = (Context.User as IGuildUser).VoiceChannel;
-            
-            if (voiceChannel != null) 
-            {
-                DiscordSocketClient client = Context.Client;
-                await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voiceChannel.Name);
-                //var audioClient = await voiceChannel.ConnectAsync();
-                //var ffmpeg;
-            } else await ReplyAsync("You are not in voice channel. Connect to voice channel, please.");
         }
         
         private static string GetMD5(string inputString) //Creates a MD5 hash from a input string

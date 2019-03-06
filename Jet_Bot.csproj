@@ -9,6 +9,7 @@
       <PackageReference Include="Discord.Net" Version="1.0.2" />
       <PackageReference Include="Google.Apis.YouTube.v3" Version="1.36.1.1226" />
       <PackageReference Include="Google.Cloud.Translation.V2" Version="1.1.0" />
+      <PackageReference Include="Xabe.FFmpeg" Version="3.1.5" />
       <PackageReference Include="YoutubeExtractor" Version="0.10.11" />
     </ItemGroup>
 
