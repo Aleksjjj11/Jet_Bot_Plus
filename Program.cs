@@ -40,7 +40,7 @@ namespace Jet_Bot
                 .AddSingleton(_commands)
                 .BuildServiceProvider();
 
-            var BotToken = "NTA5NTgxNzA0NzgwODQwOTYx.DsRM9A.8zInNX-DXzEkTlmnvPjrJgHDhUY";
+            string BotToken = "NTA5NTgxNzA0NzgwODQwOTYx.DsRM9A.8zInNX-DXzEkTlmnvPjrJgHDhUY";
 
             //Event subscription
             _client.Log += Log;
@@ -57,8 +57,8 @@ namespace Jet_Bot
 
         private async Task AnnounceUserJoined(SocketGuildUser user)
         {
-            var guild = user.Guild;
-            var channel = guild.DefaultChannel;
+            SocketGuild guild = user.Guild;
+            SocketTextChannel channel = guild.DefaultChannel;
             await channel.SendMessageAsync($"Welcome in channel, {user.Mention}");
         }
 
@@ -77,20 +77,20 @@ namespace Jet_Bot
 
         private async Task HandleCommandAsync(SocketMessage arg)
         {
-            var message = arg as SocketUserMessage;
+            SocketUserMessage message = arg as SocketUserMessage;
 
             if (message is null || message.Author.IsBot) return;
 
-            var argPos = 0;
+            int argPos = 0;
             
-            var context = new SocketCommandContext(_client, message);
+            SocketCommandContext context = new SocketCommandContext(_client, message);
             
             //Mute check
-            var userAccount = UserAccounts.GetAccount(context.User);
+            UserAccount userAccount = UserAccounts.GetAccount(context.User);
             if (userAccount.IsMuted)
             {
                 await context.Message.DeleteAsync();
-                var dmChannelFromUserMute = await context.User.GetOrCreateDMChannelAsync();
+                IDMChannel dmChannelFromUserMute = await context.User.GetOrCreateDMChannelAsync();
                 await dmChannelFromUserMute.SendMessageAsync("You have mute.");
                 return;
             }
@@ -98,7 +98,7 @@ namespace Jet_Bot
             if (ChatCorrecter.CheckMessageAsync(message))
             {
                 await context.Message.DeleteAsync();
-                var dmChannelFromUserMute = await context.User.GetOrCreateDMChannelAsync();
+                IDMChannel dmChannelFromUserMute = await context.User.GetOrCreateDMChannelAsync();
                 await dmChannelFromUserMute.SendMessageAsync("Your message had obscene language and was deleted.");
                 return;
             }
