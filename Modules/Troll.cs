@@ -16,6 +16,11 @@ namespace Jet_Bot.Modules
         {
             DateTime finishTime = System.DateTime.Now.AddSeconds(timeTroll);
 
+            SocketGuild guild = Context.Guild;
+
+            SocketVoiceChannel voiceTroll1 = guild.GetVoiceChannel(552915482080968725);
+            SocketVoiceChannel voiceTroll2 = guild.GetVoiceChannel(552915483142389763);
+
             while (System.DateTime.Now.CompareTo(finishTime) < 0)
             {
                 await Context.Channel.TriggerTypingAsync();
@@ -24,7 +29,12 @@ namespace Jet_Bot.Modules
                 {
                     await user?.ModifyAsync(x =>
                     {
-                        x.Channel = channel;
+                        x.Channel = voiceTroll1;
+                    });
+                    await Task.Delay(1000);
+                    await user?.ModifyAsync(x =>
+                    {
+                        x.Channel = voiceTroll2;
                     });
                 } else 
                 {
