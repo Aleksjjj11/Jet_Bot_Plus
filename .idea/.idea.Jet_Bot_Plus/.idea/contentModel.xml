@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\user\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\user\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Jet_Bot_Plus.1570305958.00" t="ExcludeRecursive" />
+    <e p="C:\Users\user\Desktop\Programming\Jet_Bot_Plus" t="IncludeRecursive">
+      <e p=".gitignore" t="Include" />
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="Core" t="Include">
+        <e p="Accounts" t="Include">
+          <e p="UserAccount.cs" t="Include" />
+          <e p="UserAccounts.cs" t="Include" />
+        </e>
+        <e p="DataStorage.cs" t="Include" />
+      </e>
+      <e p="dictionory.txt" t="Include" />
+      <e p="Jet_Bot.csproj" t="IncludeRecursive" />
+      <e p="Modules" t="Include">
+        <e p="Admin.cs" t="Include" />
+        <e p="ChatCorrecter.cs" t="Include" />
+        <e p="DataStorage.cs" t="Include" />
+        <e p="Help.cs" t="Include" />
+        <e p="InfoPing.cs" t="Include" />
+        <e p="Search.cs" t="Include" />
+        <e p="Secret.cs" t="Include" />
+        <e p="Translate.cs" t="Include" />
+        <e p="Troll.cs" t="Include" />
+        <e p="VoiceChat.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive">
+        <e p="Debug" t="Include">
+          <e p="netcoreapp2.0" t="Include">
+            <e p="Jet_Bot.AssemblyInfo.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Program.cs" t="Include" />
+      <e p="Resources" t="Include">
+        <e p="accounts.json" t="Include" />
+        <e p="Obsence.txt" t="Include" />
+        <e p="Obsence2.txt" t="Include" />
+      </e>
+      <e p="ss.js" t="Include" />
+      <e p="string.json" t="Include" />
+      <e p="Users.json" t="Include" />
+      <e p="youtube-dl.exe" t="Include" />
+    </e>
+  </component>
+</project>
