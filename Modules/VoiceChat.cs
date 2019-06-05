@@ -50,7 +50,6 @@ namespace Jet_Bot.Modules
         public async Task JoinWithUser(string url = "https://www.youtube.com/watch?v=J69oCCM1EcI")
         { 
             IVoiceChannel voiceChannel = voiceChannel = (Context.User as IVoiceState).VoiceChannel;
-            
             if (voiceChannel != null) 
             {
                 await ReplyAsync((Context.User as IGuildUser).Nickname + " Voice = " + voiceChannel.Name);

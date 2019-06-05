@@ -31,3 +31,14 @@ D:/C#/Discrod_Bot/Jet_Bot/Jet_Bot/obj/Debug/netcoreapp2.0/Jet_Bot.pdb
 /home/arekusei/Документы/Jet_Bot/obj/Debug/netcoreapp2.0/Jet_Bot.AssemblyInfo.cs
 /home/arekusei/Документы/Jet_Bot/obj/Debug/netcoreapp2.0/Jet_Bot.dll
 /home/arekusei/Документы/Jet_Bot/obj/Debug/netcoreapp2.0/Jet_Bot.pdb
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\bin\Debug\netcoreapp2.0\Jet_Bot.deps.json
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\bin\Debug\netcoreapp2.0\Jet_Bot.runtimeconfig.json
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\bin\Debug\netcoreapp2.0\Jet_Bot.runtimeconfig.dev.json
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\bin\Debug\netcoreapp2.0\Jet_Bot.dll
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\bin\Debug\netcoreapp2.0\Jet_Bot.pdb
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.AssemblyInfo.cs
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.dll
+C:\Users\user\Desktop\Programming\Jet_Bot_Plus\obj\Debug\netcoreapp2.0\Jet_Bot.pdb

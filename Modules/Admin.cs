@@ -74,24 +74,27 @@ namespace Jet_Bot.Modules
         [RequireBotPermission(GuildPermission.MuteMembers)]
         public async Task MuteUserAsync(IGuildUser user)
         {
+            await user.ModifyAsync(x => {
+                x.Mute = true;
+            });
             if (CheckUserBeforeBan(user) && !IsUserAdmin(user))
             {
-                var userAccount = UserAccounts.GetAccount((SocketUser) user);
-                if (userAccount.IsMuted)
-                {
-                    var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-                    await dmChannel.SendMessageAsync("User has already been issuedd a mute");
-                }
-                else
-                {
-                    userAccount.IsMuted = true;
-                    UserAccounts.SaveAccounts();
-                    var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-                    await dmChannel.SendMessageAsync("Mute issued.");
-                }
+                // var userAccount = UserAccounts.GetAccount((SocketUser) user);
+                // if (userAccount.IsMuted)
+                // {
+                //     var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
+                //     await dmChannel.SendMessageAsync("User has already been issuedd a mute");
+                // }
+                // else
+                // {
+                //     userAccount.IsMuted = true;
+                //     UserAccounts.SaveAccounts();
+                //     var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
+                //     await dmChannel.SendMessageAsync("Mute issued.");
+                // }
 
-                var dmChannelFromUserMute = await user.GetOrCreateDMChannelAsync();
-                await dmChannelFromUserMute.SendMessageAsync("You got a mute from the user " + Context.User.Username);
+                // var dmChannelFromUserMute = await user.GetOrCreateDMChannelAsync();
+                // await dmChannelFromUserMute.SendMessageAsync("You got a mute from the user " + Context.User.Username);
             }
             else
             {
@@ -104,21 +107,26 @@ namespace Jet_Bot.Modules
         [RequireBotPermission(GuildPermission.MuteMembers)]
         public async Task UnMuteUserAsync(IGuildUser user)
         {
-            var userAccount = UserAccounts.GetAccount((SocketUser) user);
-            if (userAccount.IsMuted)
-            {
-                userAccount.IsMuted = false;
-                UserAccounts.SaveAccounts();
-                var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-                await dmChannel.SendMessageAsync("You removed the mute.");
-            }
-            else
-            {
-                var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
-                await dmChannel.SendMessageAsync("This user doesn't have a mute.");
-            }
-            var dmChannelFromUserMute = await user.GetOrCreateDMChannelAsync();
-            await dmChannelFromUserMute.SendMessageAsync("You took a mute");
+            await user.ModifyAsync(x => {
+                x.Mute = false;
+            });
+            // if (CheckUserBeforeBan(user) && !IsUserAdmin(user))
+            // {
+            // var userAccount = UserAccounts.GetAccount((SocketUser) user);
+            // if (userAccount.IsMuted)
+            // {
+            //     userAccount.IsMuted = false;
+            //     UserAccounts.SaveAccounts();
+            //     var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
+            //     await dmChannel.SendMessageAsync("You removed the mute.");
+            // }
+            // else
+            // {
+            //     var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
+            //     await dmChannel.SendMessageAsync("This user doesn't have a mute.");
+            // }
+            // var dmChannelFromUserMute = await user.GetOrCreateDMChannelAsync();
+            // await dmChannelFromUserMute.SendMessageAsync("You took a mute");
         }
         
         [Command("Kick")]

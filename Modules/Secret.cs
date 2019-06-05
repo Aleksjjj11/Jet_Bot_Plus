@@ -12,20 +12,24 @@ namespace Jet_Bot.Modules
     public class Secret : ModuleBase<SocketCommandContext>
     {
         [Command("Secret")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        [RequireBotPermission(GuildPermission.Administrator)]
         public async Task SecretAsync([Remainder]string arg = "")
         {
-            Console.WriteLine(UserIsBotOwner((SocketGuildUser)Context.User));
-            if (!UserIsBotOwner((SocketGuildUser)Context.User)) return;
+            //Console.WriteLine(UserIsBotOwner((SocketGuildUser)Context.User));
+            //if (!UserIsBotOwner((SocketGuildUser)Context.User)) return;
             var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
             await dmChannel.SendMessageAsync("Hi, how are you?");
             await ReplyAsync("Hi, soft maker!!");
         }
 
         [Command("UserList")]
+        [RequireUserPermission(GuildPermission.Administrator)]
+        [RequireBotPermission(GuildPermission.Administrator)]
         public async Task UserListAsync()
         {
             //Get list users sent in text channel
-            if (!UserIsGod((SocketGuildUser) Context.User)) return;
+            //if (!UserIsGod((SocketGuildUser) Context.User)) return;
             var dmChannel = await Context.User.GetOrCreateDMChannelAsync();
             await dmChannel.SendMessageAsync(DataStorage.GetDataStorage());
         }
@@ -48,7 +52,7 @@ namespace Jet_Bot.Modules
                 select r.Id;
             ulong roleID = result.FirstOrDefault();
             if (roleID == 0) return false; 
-            var targetRole = user.Guild.GetRole(roleID);
+            SocketRole targetRole = user.Guild.GetRole(roleID);
             return user.Roles.Contains(targetRole);
         }
          

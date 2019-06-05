@@ -18,7 +18,7 @@ namespace Jet_Bot
         {
             string credentail_path = @"/home/arekusei/Документы/Jet_Bot/Jet-Bot-3cec51a5b6b1.json";
             System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentail_path);
-            //string debug = System.Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
+            string debug = System.Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
             Program program = new Program();
             //Console.WriteLine(debug);
             program.RunBotAsync().GetAwaiter().GetResult();
